@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>&lt;Code&gt; Blog</title>
+    <meta name="description" content="An awesome fullstack blog about coding!">
+    <meta name="author" content="Kaizen Media">
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <header>
+      <h1>My Awesome Blog!</h1>
+    </header>
+    <main>
+      <% data.forEach(post => { %>
+        <article>
+          <h2> <%= post.title %> </h2>
+          <p> <%= post.body %> </p>
+        </article>
+      <% }) %>  
+    </main>
+    <footer>
+      <p>&copy; <%= new Date().toLocaleDateString('en-US') %></p>
+      <script src="/static/index.js"></script>
+    </footer>
+  </body>
+</html>
