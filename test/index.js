@@ -18,8 +18,7 @@ describe('DATABASE TESTS', () => {
 })
 
 describe('ROUTE TESTS', () => {
-  /** Run function before each test */
-  beforeEach(done => done());
+  beforeEach(done => done()); // Run function before each test
 
   describe('Get /', () => {
     it('should Return index view', done => {

@@ -1,26 +1,20 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>&lt;Code&gt; Blog</title>
-    <meta name="description" content="An awesome fullstack blog about coding!">
-    <meta name="author" content="Kaizen Media">
-    <link rel="stylesheet" href="/static/styles.css">
-  </head>
-  <body>
-    <header>
-      <h1>My Awesome Blog!</h1>
-    </header>
-    <main>
-      <% data.forEach(post => { %>
-        <article>
-          <h2> <%= post.title %> </h2>
-          <p> <%= post.body %> </p>
-        </article>
-      <% }) %>  
-    </main>
-    <footer>
-      <p>&copy; <%= new Date().toLocaleDateString('en-US') %></p>
-      <script src="/static/index.js"></script>
-    </footer>
-  </body>
-</html>
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body text-center">
+      <h1><i class="fab fa-node-js fa-3x"></i></h1>
+      <p>Create an account or login</p>
+      <a href="/users/register" class="btn btn-primary btn-block mb-2">Register</a>
+      <a href="/users/login" class="btn btn-secondary btn-block">Login</a>
+    </div>
+
+    <div class="card card-body mt-5">
+      <h1>Recent posts</h1>
+      <div class="card card-body mt-3">
+        <h1 class="mb-0">title</h1>
+        <p class="mb-2 mt-0"><small>by User</small></p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo asperiores repudiandae inventore doloribus tempora quidem, fugit officiis, similique neque ullam et aliquam enim debitis quos vel architecto molestiae...</p>
+        <a class="btn btn-secondary btn-sm" href="/posts/1">Read More</a>
+      </div>
+    </div>
+  </div>
+</div>
