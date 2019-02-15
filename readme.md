@@ -1,8 +1,6 @@
 # Node.js, Express.js, EJS and MongoDB (Mongoose) blog
 
----
-
-This is the official repository of the full-stack web development course by (Kaizen Media)[https://www.youtube.com/channel/UCd4UmlBFIhj-yJrzn6foxgw?view_as=subscriber] on Youtube.
+This is the official repository of the full-stack web development course by [Kaizen Media](https://www.youtube.com/channel/UCd4UmlBFIhj-yJrzn6foxgw?view_as=subscriber) on Youtube.
 
 This project requires:
 
@@ -12,9 +10,9 @@ This project requires:
 - Reliable internet connection
 - Some HTML and CSS knowledge
 
-## Youtube videos and topics covered
-
 ---
+
+## Youtube videos and topics covered
 
 | Video | Topics | Timestamps |
 | ----- | ------ | ---------- |
