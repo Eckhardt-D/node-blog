@@ -65,7 +65,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Connect flash
+// Connect flash (Requires sessions)
 app.use(flash());
 
 // Global variables

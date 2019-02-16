@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
   .then(post => {
     res.render('post', {post});
   })
-  .catch(e => console.log(e));
+  .catch(e => res.redirect('/posts'));
 });
 
 // Get the single post edit route
@@ -36,7 +36,7 @@ router.get('/edit/:id', (req, res) => {
     res.locals.isNew = true;
     res.render('editPost', {post});
   })
-  .catch(e => console.log(e));
+  .catch(e => res.redirect('/posts'));
 });
 
 // Add a new post
@@ -52,7 +52,7 @@ router.post('/', (req, res) => {
   .then(post => {
     res.redirect('/posts/' + post._id);
   })
-  .catch(e => console.log(e));
+  .catch(e => res.redirect('/posts'));
 });
 
 // Edit an existing post
@@ -66,7 +66,7 @@ router.put('/:id', (req, res) => {
   .then(post => {
     res.redirect('/posts/' + post._id);
   })
-  .catch(e => console.log(e));
+  .catch(e => res.redirect('/posts'));
 });
 
 // Delete a post from the Database
@@ -75,7 +75,7 @@ router.delete('/:id', (req, res) => {
   .then(() => {
     res.redirect('/posts');
   })
-  .catch(e => console.log(e));
+  .catch(e => res.redirect('/posts'));
 })
 
 module.exports = router;
