@@ -4,4 +4,3 @@
   | Description: Client-side JavaScript    |
   |----------------------------------------|*/
 
-console.log('Hello!', 'cheese')

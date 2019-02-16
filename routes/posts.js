@@ -7,12 +7,13 @@ router.get('/', (req, res) => {
 
 // Get the post creation route
 router.get('/new', (req, res) => {
-  res.send('New Post');
+  res.locals.isNew = true;
+  res.render('newPost');
 });
 
 // Get the single post route
 router.get('/:id', (req, res) => {
-  res.send('Specific Post');
+  res.render('newPost');
 });
 
 // Add a new post
