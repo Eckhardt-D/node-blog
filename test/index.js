@@ -2,6 +2,7 @@ const app = require('../app');
 const chaiHttp = require('chai-http');
 const chai = require('chai');
 const should = require('chai').should();
+const expect = require('chai').expect;
 const mongoose = require('mongoose');
 chai.use(chaiHttp);
 
@@ -30,6 +31,34 @@ describe('ROUTE TESTS', () => {
         res.should.be.html;
 
         done();
+      })
+    })
+  })
+
+  describe('Post Pages Middlewares', () => {
+    it('Should have an auth check', done => {
+      let requester = chai.request(app).keepOpen();
+
+      Promise.all([
+        requester.get('/posts'),
+        requester.get('/posts/1'),
+        requester.get('/posts/new')
+      ])
+      .then(responses => {
+        responses.forEach(response => {
+          expect(response).to.redirect;
+        })        
+      })
+      .catch(e => {
+        e.should.not.exist;
+        console.log(e);
+      })
+      .then(() => {
+        requester.close(() => void done())
+      })
+      .catch(e => {
+        e.should.not.exist;
+        console.log(e);
       })
     })
   })

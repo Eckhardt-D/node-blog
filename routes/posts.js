@@ -1,29 +1,81 @@
 const router = require('express').Router();
+const {PostController} = require('../database/controllers');
+const {UserController} = require('../database/controllers');
 
 // Get the posts route
 router.get('/', (req, res) => {
-  res.send('All Posts');
+  PostController.getPosts()
+  .then(posts => {
+    res.render('posts', { posts });
+  })
+  .catch(err => void console.log(error));
 });
 
 // Get the post creation route
 router.get('/new', (req, res) => {
+  // Must set isNew to render editor
   res.locals.isNew = true;
   res.render('newPost');
 });
 
 // Get the single post route
 router.get('/:id', (req, res) => {
-  res.render('newPost');
+  PostController.getPost(req.params.id)
+  .then(post => {
+    res.render('post', {post});
+  })
+  .catch(e => console.log(e));
+});
+
+// Get the single post edit route
+router.get('/edit/:id', (req, res) => {
+  // Find the post
+  PostController.getPost(req.params.id)
+  .then(post => {
+    // Must set isNew to render editor
+    res.locals.isNew = true;
+    res.render('editPost', {post});
+  })
+  .catch(e => console.log(e));
 });
 
 // Add a new post
-router.post('/new', (req, res) => {
-  res.send('Created a post');
+router.post('/', (req, res) => {
+  const post = {
+    title: req.body.postTitle,
+    body: req.body.postBody,
+    author: req.user.name,
+    userId: req.user._id.toString()
+  };
+
+  PostController.createPost(post)
+  .then(post => {
+    res.redirect('/posts/' + post._id);
+  })
+  .catch(e => console.log(e));
 });
 
 // Edit an existing post
-router.put('/new/:id', (req, res) => {
-  res.send('Edited a post');
+router.put('/:id', (req, res) => {
+  const updatedPost = {
+    title: req.body.postTitle,
+    body: req.body.postBody
+  };
+
+  PostController.updatePost(req.params.id, updatedPost)
+  .then(post => {
+    res.redirect('/posts/' + post._id);
+  })
+  .catch(e => console.log(e));
 });
+
+// Delete a post from the Database
+router.delete('/:id', (req, res) => {
+  PostController.deletePost(req.params.id)
+  .then(() => {
+    res.redirect('/posts');
+  })
+  .catch(e => console.log(e));
+})
 
 module.exports = router;

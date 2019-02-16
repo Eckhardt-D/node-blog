@@ -6,7 +6,6 @@ const postModel = require('../models/Post');
  @property {Object} post._id The post's Database Id
  @property {Object} post A post object
  @property {Number} post.userId The post's user Id
- @property {Number} post.id The post's Id
  @property {String} post.title the post's title
  @property {String} post.body the post's title
  */
@@ -15,7 +14,7 @@ const postModel = require('../models/Post');
  Gets All Posts from the Database
  @returns {Post[]}
  */
-const getPosts = _ => 
+const getPosts = () => 
   postModel.find({});
 
 /** 
@@ -24,7 +23,7 @@ const getPosts = _ =>
  @param {Post.id}
 */
 const getPost = id => 
-  postModel.findOne({id});
+  postModel.findById(id);
 
 /**
  Inserts a new post into the Database
@@ -39,8 +38,8 @@ const createPost = payload =>
  @param {Post}
  @returns {Post}
  */
-const updatePost = payload => 
-  postModel.findByIdAndUpdate(payload._id, payload);
+const updatePost = (id, payload) => 
+  postModel.findByIdAndUpdate(id, payload);
 
 /**
  Deletes a post with specific Id

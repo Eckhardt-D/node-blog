@@ -7,6 +7,7 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
@@ -39,6 +40,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(methodOverride('_method'));
 
 // Express session
 app.use(
@@ -96,6 +98,7 @@ app.get('*', function(req, res) {
 
 // Handle other 500 errors
 app.use(function errorHandler(err, req, res, next) {
+  console.log(err)
   res.status(500);
   res.render('error', { text: 'Internal Server Error' });
 });

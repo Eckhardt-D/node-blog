@@ -1,0 +1,18 @@
+<div class="row mt-5">
+  <div class="col-md-10 m-auto">
+    <div class="card card-body mt-5">
+      <div class="card card-body mt-3">
+        <h1 class="mb-0"><%= post.title %></h1>
+        <p class="mb-2 mt-0"><small>by <%= post.author %></small></p>
+          <div class="fr-view"><%-post.body%></div>
+            <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+              <div class="row">
+                <a class="btn btn-sm btn-success ml-3" href="/posts/edit/<%= post.id %>">Edit Post</a>
+                <button class="deleteBtn btn btn-sm btn-warning ml-3">Delete Post</button>
+              </div>
+            </form>                        
+          </div>
+        <a class="btn btn-secondary mt-3" href="/">Go Home</a>
+    </div>
+  </div>
+</div>

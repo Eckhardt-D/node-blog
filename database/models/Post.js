@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // Define Models
 const Post = mongoose.model('post', {
   userId: String,
-  id: Number,
+  author: String,
   title: String,
   body: String
 });

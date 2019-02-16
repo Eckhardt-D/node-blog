@@ -6,7 +6,7 @@
  @property {String} user.name The user's name
  @property {String} user.email The user's email
  @property {String} user.password The user's encrypted password
- @property {Date} user.created the user's date of creation
+ @property {Date} user.date the user's date of creation
  @property {Array} user.posts the user's title
  */
 
@@ -17,7 +17,7 @@ const userModel = require('../models/User');
  @param {User._id}
  @returns {User[]}
  */
-const getUser = id => userModel.find({});
+const getUser = id => userModel.findById(id);
 
 /**
  Inserts a new user into the Database
