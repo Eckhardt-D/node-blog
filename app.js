@@ -53,6 +53,16 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Set authenticated on res.locals
+app.use((req, res, next) => {
+  if(req.isAuthenticated()) {
+    res.locals.isAuthenticated = true;
+  } else {
+    res.locals.isAuthenticated = false;
+  }
+  next();
+});
+
 // Connect flash
 app.use(flash());
 
@@ -77,11 +87,7 @@ app.use('/static', express.static(__dirname + '/public', staticOptions));
 // Use router
 app.use('/', require('./routes'));
 app.use('/users', require('./routes/users'));
-app.use(
-  '/posts',
-  authMiddleware['ensureAuthenticated'],
-  require('./routes/posts')
-);
+app.use('/posts', authMiddleware['ensureAuthenticated'], require('./routes/posts'));
 
 // Handle 404
 app.get('*', function(req, res) {
